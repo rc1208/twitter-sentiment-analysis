@@ -1,0 +1,26 @@
+<?php
+
+
+include("database/db_conection.php");
+
+if(isset($_POST['login']))
+{
+    $user_name=$_POST['email'];
+    $user_pass=$_POST['pass'];
+
+    $check_user="select * from users WHERE name='$user_name'AND pass='$user_pass'";
+
+    $run=mysqli_query($dbcon,$check_user);
+
+    if(mysqli_num_rows($run))
+    {
+       header('welcome.php');
+      
+
+    }
+    else
+    {
+        echo "<script>alert('Email or password is incorrect!')</script>";
+    }
+}
+?>
